@@ -48,6 +48,7 @@ body {
 .nav.navbar-nav.navbar-right li a:hover {
   color: #5ac9ff;
   background-color: #004363;
+  border-radius: 5px;
 }
 
 #navlist {
