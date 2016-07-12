@@ -38,7 +38,7 @@
           </li>
         <% else %>
           <li>
-            <%= link_to  new_user_session_path do %>
+            <%= link_to '#', data: { toggle: 'modal', target: '#sign-in' }  do %>
               <i class="fa fa-sign-in" aria-hidden="true"></i> Log in
             <% end %>
           </li>
