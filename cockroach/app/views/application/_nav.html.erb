@@ -42,6 +42,12 @@
               <i class="fa fa-sign-in" aria-hidden="true"></i> Log in
             <% end %>
           </li>
+          <hr class="visible-xs">
+          <li>
+            <%= link_to '#', data: { toggle: 'modal', target: '#sign-up' }  do %>
+              <i class="fa fa-user-plus" aria-hidden="true"></i> Register
+            <% end %>
+          </li>          
         <% end %>
       </ul>
     </div>
