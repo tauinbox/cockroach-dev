@@ -29,17 +29,13 @@ $(function() {
     location.reload();
     return $(this).parents('.modal').modal('hide');
   }).on("ajax:error", function(event, xhr, settings, exceptions) {
-    // console.log(exceptions);
-    // console.log(xhr);
-    // console.log(event);
-    // console.log(settings);
-    var error_messages = xhr.responseJSON 
-      ? "<div class='alert alert-danger pull-left'>" + xhr.responseJSON['error'] + "</div>" 
-      : "<div class='alert alert-danger pull-left'>Unknown error</div>";
-    return $(this).parents().children('.modal-footer').html(error_messages);
-    // var error_messages = xhr.responseJSON['error'] ? "<div class='alert alert-danger pull-left'>" + xhr.responseJSON['error'] + "</div>" 
-    // : xhr.responseJSON['errors'] ? $.map(xhr.responseJSON["errors"], function(v, k) { return "<div class='alert alert-danger pull-left'>" + k + " " + v + "</div>"; }).join("")
-    // : "<div class='alert alert-danger pull-left'>Unknown error</div>";
-    // return $(this).parents().children('.modal-footer').html(error_messages);    
+
+    var error_messages = xhr.responseJSON['error'] ? "<div class='alert alert-danger text-center'>" + xhr.responseJSON['error'] + "</div>" 
+    : xhr.responseJSON['errors'] ? $.map(xhr.responseJSON["errors"], function(value, key) { 
+        return "<div class='alert alert-danger text-center'>" + key + " " + value + "</div>"; 
+      }).join("")
+    : "<div class='alert alert-danger text-center'>Unknown error</div>";
+    
+    return $(this).parents().children('.modal-footer').html(error_messages);    
   });
 });
