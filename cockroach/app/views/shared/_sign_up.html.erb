@@ -10,22 +10,27 @@
       <!-- Modal body-->
       <div class="modal-body">
         <%= form_for(User.new, url: registration_path(:user), html: { id: 'sign_up_user', :'data-type' => 'json' }, remote: true) do |f| %>
-          <div>
+          <div class="field">
             <%= f.label :email %><br />
             <%= f.email_field :email, autofocus: true %>
           </div>
 
-          <div>
-            <%= f.label :password %><br />
+          <div class="field">
+            <%= f.label :password %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
             <%= f.password_field :password, autocomplete: "off" %>
           </div>
 
-          <div>
+          <div class="field">
             <%= f.label :password_confirmation %><br />
             <%= f.password_field :password_confirmation, autocomplete: "off" %>
           </div>
 
-          <div><%= f.submit "Sign up" %></div>
+          <div class="actions">
+            <%= f.submit "Register" %>
+          </div>
         <% end %>
       </div>
       <div class="modal-footer">
