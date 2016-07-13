@@ -11,25 +11,38 @@
       <div class="modal-body">
         <%= form_for(User.new, url: registration_path(:user), html: { id: 'sign_up_user', :'data-type' => 'json' }, remote: true) do |f| %>
           <div class="field">
-            <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true %>
+            <div class="row">
+              <%= f.label :email, class: "col-sm-offset-1 col-sm-2" %>
+              <div class="col-sm-7">
+                <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Enter your Email" %>
+              </div>
+            </div>
           </div>
 
           <div class="field">
-            <%= f.label :password %>
-            <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
-            <% end %><br />
-            <%= f.password_field :password, autocomplete: "off" %>
+            <div class="row">
+              <%= f.label :password, class: "col-sm-offset-1 col-sm-2" %>
+              <div class="col-sm-7">
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %>
+                <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Enter Password" %>
+              </div>
+            </div>
           </div>
 
           <div class="field">
-            <%= f.label :password_confirmation %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "off" %>
+            <div class="row">
+              <%= f.label :password_confirmation, "Confirm", class: "col-sm-offset-1 col-sm-2" %>
+              <div class="col-sm-7">
+                <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Retype Password" %>
+              </div>
+            </div>
           </div>
-
-          <div class="actions">
-            <%= f.submit "Register" %>
+          
+          <br />
+          <div class="actions text-center">
+            <%= f.submit "Register", class: "btn btn-primary" %>
           </div>
         <% end %>
       </div>
