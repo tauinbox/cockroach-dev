@@ -29,12 +29,12 @@ $(function() {
     location.reload();
     return $(this).parents('.modal').modal('hide');
   }).on("ajax:error", function(event, xhr, settings, exceptions) {
-    var error_messages = xhr.responseJSON['error'] ? "<div class='alert alert-danger text-center'>" + xhr.responseJSON['error'] + "</div>" 
+    var error_messages = xhr.responseJSON['error'] ? "<div class='alert alert-danger text-center' style='margin-bottom: 5px; padding: 5px;'>" + xhr.responseJSON['error'] + "</div>" 
     : xhr.responseJSON['errors'] ? $.map(xhr.responseJSON["errors"], function(value, key) {
-      return "<div class='alert alert-danger text-center'><strong>" + key + "</strong> " + value.join("; ") + "</div>" ;
+      return "<div class='alert alert-danger text-center' style='margin-bottom: 5px; padding: 5px;'><strong>" + key + "</strong> " + value.join("; ") + "</div>" ;
     })
-    : "<div class='alert alert-danger text-center'>Unknown error</div>";
+    : "<div class='alert alert-danger text-center' style='margin-bottom: 5px; padding: 5px;'>Unknown error</div>";
     
-    return $(this).parents().children('.modal-footer').html(error_messages);    
+    return $(this).parents().children('.modal-footer').html(error_messages);
   });
 });
