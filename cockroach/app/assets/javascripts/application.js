@@ -25,15 +25,16 @@ $(document).ready(function() {
 });
 
 $(function() {
+  const ALERT_DIV = "<div class='alert alert-danger text-center' style='margin-bottom: 5px; padding: 5px;'>"
   return $("form#sign_in_user, form#sign_up_user").on("ajax:success", function(event, xhr, settings) {
     location.reload();
     return $(this).parents('.modal').modal('hide');
   }).on("ajax:error", function(event, xhr, settings, exceptions) {
-    var error_messages = xhr.responseJSON['error'] ? "<div class='alert alert-danger text-center' style='margin-bottom: 5px; padding: 5px;'>" + xhr.responseJSON['error'] + "</div>" 
+    var error_messages = xhr.responseJSON['error'] ? ALERT_DIV + xhr.responseJSON['error'] + "</div>" 
     : xhr.responseJSON['errors'] ? $.map(xhr.responseJSON["errors"], function(value, key) {
-      return "<div class='alert alert-danger text-center' style='margin-bottom: 5px; padding: 5px;'><strong>" + key + "</strong> " + value.join("; ") + "</div>" ;
+      return ALERT_DIV + "<strong>" + key + "</strong> " + value.join("; ") + "</div>" ;
     })
-    : "<div class='alert alert-danger text-center' style='margin-bottom: 5px; padding: 5px;'>Unknown error</div>";
+    : ALERT_DIV + "Unknown error</div>";
     
     return $(this).parents().children('.modal-footer').html(error_messages);
   });
