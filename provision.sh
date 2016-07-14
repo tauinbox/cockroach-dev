@@ -38,36 +38,36 @@ gem install bundler -N >/dev/null 2>&1
 install Git git
 install SQLite sqlite3 libsqlite3-dev
 
-: <<'END' #start comment section
 ##########################################
-install memcached memcached
-install Redis redis-server
-install RabbitMQ rabbitmq-server
+# temporarily comment this section
 
-type psql >/dev/null 2>&1 && echo "PostgreSQL already exists" || {
-  install PostgreSQL postgresql postgresql-contrib libpq-dev
-  sudo -u postgres createuser --superuser vagrant
-  sudo -u postgres createdb -O vagrant activerecord_unittest
-  sudo -u postgres createdb -O vagrant activerecord_unittest2  
-}
+# install memcached memcached
+# install Redis redis-server
+# install RabbitMQ rabbitmq-server
 
-type mysql >/dev/null 2>&1 && echo "MySQL already exists" || {
+# type psql >/dev/null 2>&1 && echo "PostgreSQL already exists" || {
+#   install PostgreSQL postgresql postgresql-contrib libpq-dev
+#   sudo -u postgres createuser --superuser vagrant
+#   sudo -u postgres createdb -O vagrant activerecord_unittest
+#   sudo -u postgres createdb -O vagrant activerecord_unittest2  
+# }
 
-debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
-debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
-install MySQL mysql-server libmysqlclient-dev
+# type mysql >/dev/null 2>&1 && echo "MySQL already exists" || {
 
-mysql -uroot -proot <<SQL
-CREATE USER 'rails'@'localhost';
-CREATE DATABASE activerecord_unittest  DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
-CREATE DATABASE activerecord_unittest2 DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
-GRANT ALL PRIVILEGES ON activerecord_unittest.* to 'rails'@'localhost';
-GRANT ALL PRIVILEGES ON activerecord_unittest2.* to 'rails'@'localhost';
-GRANT ALL PRIVILEGES ON inexistent_activerecord_unittest.* to 'rails'@'localhost';
-SQL
-}
+# debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
+# debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
+# install MySQL mysql-server libmysqlclient-dev
+
+# mysql -uroot -proot <<SQL
+# CREATE USER 'rails'@'localhost';
+# CREATE DATABASE activerecord_unittest  DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+# CREATE DATABASE activerecord_unittest2 DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+# GRANT ALL PRIVILEGES ON activerecord_unittest.* to 'rails'@'localhost';
+# GRANT ALL PRIVILEGES ON activerecord_unittest2.* to 'rails'@'localhost';
+# GRANT ALL PRIVILEGES ON inexistent_activerecord_unittest.* to 'rails'@'localhost';
+# SQL
+# }
 ##########################################
-END #end comment section
 
 install 'Nokogiri dependencies' libxml2 libxml2-dev libxslt1-dev
 install 'Blade dependencies' libncurses5-dev
