@@ -12,6 +12,17 @@
   <body>
 
     <%= render 'nav' %>
+
+    <% if notice %>
+      <div class="container">
+        <p class="alert alert-info"><%= notice %></p>
+      </div>
+    <% end %>
+    <% if alert %>
+      <div class="container">
+        <p class="alert alert-danger"><%= alert %></p>
+      </div>
+    <% end %>
     
     <%= render 'shared/sign_in' %>
     <%= render 'shared/sign_up' %>
