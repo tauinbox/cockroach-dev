@@ -45,13 +45,6 @@ install SQLite sqlite3 libsqlite3-dev
 # install Redis redis-server
 # install RabbitMQ rabbitmq-server
 
-# type psql >/dev/null 2>&1 && echo "PostgreSQL already exists" || {
-#   install PostgreSQL postgresql postgresql-contrib libpq-dev
-#   sudo -u postgres createuser --superuser vagrant
-#   sudo -u postgres createdb -O vagrant activerecord_unittest
-#   sudo -u postgres createdb -O vagrant activerecord_unittest2  
-# }
-
 # type mysql >/dev/null 2>&1 && echo "MySQL already exists" || {
 
 # debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
@@ -68,6 +61,13 @@ install SQLite sqlite3 libsqlite3-dev
 # SQL
 # }
 ##########################################
+
+type psql >/dev/null 2>&1 && echo "PostgreSQL already exists" || {
+  install PostgreSQL postgresql postgresql-contrib libpq-dev
+  sudo -u postgres createuser --superuser vagrant
+  sudo -u postgres createdb -O vagrant activerecord_unittest
+  sudo -u postgres createdb -O vagrant activerecord_unittest2  
+}
 
 install 'Nokogiri dependencies' libxml2 libxml2-dev libxslt1-dev
 install 'Blade dependencies' libncurses5-dev
