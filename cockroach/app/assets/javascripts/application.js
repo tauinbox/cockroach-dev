@@ -27,8 +27,14 @@ $(document).ready(function() {
 $(function() {
   const ALERT_DIV = "<div class='alert alert-danger text-center' style='margin-bottom: 5px; padding: 5px;'>"
   return $("form#sign_in_user, form#sign_up_user").on("ajax:success", function(event, xhr, settings) {
+    $(this).parents('.modal').modal('hide');
+    // $('.my-informer').remove();
+    // $('#sign-in').before('<div class="text-center"><p class="alert alert-info">Signed in successfully.</p></div>');
+    // var host = location.href;
+    // $.get( host + "/navbar", function(data) {
+    //   $('#mynavbar').replaceWith(data);
+    // });
     location.reload();
-    return $(this).parents('.modal').modal('hide');
   }).on("ajax:error", function(event, xhr, settings, exceptions) {
     var error_messages = xhr.responseJSON['error'] ? ALERT_DIV + xhr.responseJSON['error'] + "</div>" 
     : xhr.responseJSON['errors'] ? $.map(xhr.responseJSON["errors"], function(value, key) {
