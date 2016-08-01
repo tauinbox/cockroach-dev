@@ -1,5 +1,5 @@
 <div class="well col-md-offset-4 col-md-4 col-xs-offset-1 col-xs-10" id="login-form">
-  <h2>Can't Log In</h2><br/>
+  <h2 align="center">Can't Log In</h2><br/>
 
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
     <%= devise_error_messages! %>
