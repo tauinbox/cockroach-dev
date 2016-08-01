@@ -41,6 +41,5 @@
     </div>
   <% end %>
 
-  <%= link_to 'Log in',  new_user_session_path %><br />
-  <%= link_to 'Forgot your password?',  new_user_password_path %><br />
+  <%= render "devise/shared/links" %>
 </div>
