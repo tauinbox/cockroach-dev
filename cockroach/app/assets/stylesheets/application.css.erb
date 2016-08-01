@@ -8,14 +8,14 @@
 #cockroach-logo {
 	background-image: url('<%= asset_path("cockroach-logo2.png") %>');
 	background-size: 100%;
-	width: 100px;
-	height: 100px;
+	width: 70px;
+	height: 70px;
 	text-align: center;
 }
 
 body {
   background-color: #006699;
-  margin-top: 120px;
+  margin-top: 100px;
   margin-left: 0px;
   margin-right: 0px;
 }
@@ -55,7 +55,16 @@ body {
 
 div.navbar-brand a h1{
   margin: 15px;
-} 
+}
+
+div.navbar-brand {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+ul#navlist {
+  margin-top: 12px;
+}
 
 .navbar-header .navbar-brand a:hover {
   color: #5ac9ff;
@@ -148,25 +157,24 @@ p.alert {
   .nav.navbar-nav.navbar-right li a { /*MENU FONT SIZE*/
     font-size: 1.3em;
   }
-/*  body {
-  	margin-top: 110px;
-  }*/
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 991px) {
   .nav.navbar-nav.navbar-right li a { /*MENU FONT SIZE*/
     font-size: 1em;
   }
   #cockroach-logo {
-    width: 90px;
-    height: 90px;    
+    display: none;
   }
   div.navbar-brand a h1{ /*BRAND NAME FONT SIZE*/
     margin: 10px;
     font-size: 1.2em;
   }
+  ul#navlist {
+    margin-top: 5px;
+  }
   body {
-  	margin-top: 110px;
+  	margin-top: 80px;
   }
 }
 
@@ -180,27 +188,20 @@ p.alert {
   #navbar ul hr {
     margin: 0px;
   }
-  #cockroach-logo {
-    width: 70px;
-    height: 70px;    
-  }
   div.navbar-brand a h1{
-    margin: 0px;
+    margin: 5px;
   }
   body {
-  	margin-top: 85px;
+  	margin-top: 70px;
   }    
 }
 
 @media (max-width: 443px) {
-  #cockroach-logo {
-    display: none;
-  }
   div.navbar-brand {
     height: 50px;
   }
   div.navbar-brand a h1{ /*BRAND NAME FONT SIZE*/
-    margin: 0px;
+    margin: 10px;
     font-size: .9em;
   }
   #linkedin, #github {
