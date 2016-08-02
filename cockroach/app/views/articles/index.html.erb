@@ -1,31 +1,19 @@
-<div class="well">
+<div class="articles">
+  <h1 align="center">Articles</h1>
 
-  <h1>Articles</h1>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Body</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @articles.each do |article| %>
-        <tr>
-          <td><%= article.title %></td>
-          <td><%= article.body %></td>
-          <td><%= link_to 'Show', article %></td>
-          <td><%= link_to 'Edit', edit_article_path(article) %></td>
-          <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <br>
-
-  <%= link_to 'New Article', new_article_path %>
-
+  <% @articles.each do |article| %>
+    <div class="well row article">
+      <h4><%= article.title %></h4>
+      <div>
+        <%= article.body %>
+      </div>
+      <br/>
+      <%= link_to 'Show', article %> |
+      <%= link_to 'Edit', edit_article_path(article) %> |
+      <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  <% end %>
+  <div class="button-wrapper">
+    <%= button_to 'I Wanna Post My New Article!', new_article_path, class: "btn btn-info", method: :get %>
+  </div>
 </div>
