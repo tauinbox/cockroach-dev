@@ -2,15 +2,20 @@
   <h1 align="center">Articles</h1>
 
   <% @articles.each do |article| %>
-    <div class="well row article">
-      <h4><%= article.title %></h4>
-      <div>
-        <%= article.body %>
+    <div class="row article">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h4 class="panel-title"><%= article.title %></h4>
+        </div>
+        <div class="panel-body">
+          <%= article.body %>
+        </div>
+        <div class="panel-footer">
+          <%= link_to 'Show', article %> |
+          <%= link_to 'Edit', edit_article_path(article) %> |
+          <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
       </div>
-      <br/>
-      <%= link_to 'Show', article %> |
-      <%= link_to 'Edit', edit_article_path(article) %> |
-      <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
   <% end %>
   <div class="button-wrapper">
